@@ -81,10 +81,13 @@ class _TaskWidgetState extends State<TaskWidget> {
                     if (newValue!) {
                       await widget.tasksDoc!.reference
                           .update(createTasksRecordData(
-                        completed: false,
+                        completed: true,
                       ));
                     } else {
-                      await widget.checkAction?.call();
+                      await widget.tasksDoc!.reference
+                          .update(createTasksRecordData(
+                        completed: false,
+                      ));
                     }
                   },
                   side: (FlutterFlowTheme.of(context).alternate != null)
